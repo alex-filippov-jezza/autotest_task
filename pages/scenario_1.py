@@ -7,13 +7,14 @@ class Scenario1Page(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
 
+    @property
     def banner(self):
         banner_selector = (By.CSS_SELECTOR, '#contacts_clients > div.sbis_ru-container > div > div > '
                                             'div.s-Grid-col.s-Grid-col--4.s-Grid-col--xm12 > div > a > img')
         return self.find(banner_selector)
 
     def banner_click(self):
-        self.banner().click()
+        self.banner.click()
 
     def switch_tab(self):
         original_window = self.browser.current_window_handle
@@ -22,6 +23,7 @@ class Scenario1Page(BasePage):
             if window_handle != original_window:
                 return self.browser.switch_to.window(window_handle)
 
+    @property
     def find_block(self):
         block_selector = (
             By.CSS_SELECTOR,
@@ -33,19 +35,23 @@ class Scenario1Page(BasePage):
         action = ActionChains(self.browser)
         return action.move_to_element(block).perform()
 
+    @property
     def block_is_displayed(self):
-        return self.find_block().is_displayed()
+        return self.find_block.is_displayed()
 
+    @property
     def about(self):
         link_selector = (By.XPATH, '//*[@id="container"]/div[1]/div/div[5]/div/div/div[1]/div/p[4]/a')
         return self.find(link_selector)
 
     def about_click(self):
-        self.about().click()
+        self.about.click()
 
+    @property
     def current_url_page(self):
         return self.browser.current_url
 
+    @property
     def working_section(self):
 
         working = (By.CSS_SELECTOR, '#container > div.tensor_ru-content_wrapper > div > '
@@ -59,6 +65,7 @@ class Scenario1Page(BasePage):
         w_h = sizes['width'], sizes['height']
         return w_h
 
+    @property
     def compare_images_result(self):
         k = 0
         for i in range(1, 4):

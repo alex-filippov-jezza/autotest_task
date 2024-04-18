@@ -8,7 +8,8 @@ class Scenario2Page(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
 
-    def find_region(self):
+    @property
+    def region(self):
         region = (By.CSS_SELECTOR, '#container > div.sbis_ru-content_wrapper.ws-flexbox.ws-flex-column > div > '
                                    'div.sbis_ru-container.sbisru-Contacts__relative > '
                                    'div.s-Grid-container.s-Grid-container--space.s-Grid-container--alignEnd.s-Grid'
@@ -17,8 +18,9 @@ class Scenario2Page(BasePage):
 
         return self.find(region)
 
-    def define_region(self):
-        return self.find_region().text
+    @property
+    def region_name(self):
+        return self.region.text
 
     def get_partner(self, count: int):
         data_path = (By.XPATH,
@@ -27,7 +29,8 @@ class Scenario2Page(BasePage):
         name = self.find(data_path).text
         return name
 
-    def get_partners_list(self):
+    @property
+    def partners_list(self):
         partners = []
         i = 1
         while i:
@@ -40,10 +43,10 @@ class Scenario2Page(BasePage):
 
     def change_region(self):
         new_region = (By.XPATH, '//*[@id="popup"]/div[2]/div/div/div/div/div[2]/div/ul/li[43]/span/span')
-        self.find_region().click()
+        self.region.click()
         return self.find(new_region).click()
 
-    def get_url_title(self):
+    def check_url_title(self):
         title: str = self.browser.title
         url: str = self.browser.current_url
 
