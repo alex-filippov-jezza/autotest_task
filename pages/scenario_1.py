@@ -7,16 +7,6 @@ class Scenario1Page(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
 
-    def contacts_open(self):
-        section_selector = (By.CSS_SELECTOR, '#wasaby-content > div > div > '
-                                             'div.sbis_ru-Region.bodyContent__zIndex-context > div.sbis_ru-content > '
-                                             'div.sbisru-Header-sticky.sbisru-Header--font.sbisru-Header__scheme'
-                                             '--default > div.sbisru-Header > '
-                                             'div.sbisru-Header__container.sbis_ru-container > ul > '
-                                             'li.sbisru-Header__menu-item.sbisru-Header__menu-item-1.mh-8.s-Grid'
-                                             '--hide-sm > a')
-        self.find(section_selector).click()
-
     def banner(self):
         banner_selector = (By.CSS_SELECTOR, '#contacts_clients > div.sbis_ru-container > div > div > '
                                             'div.s-Grid-col.s-Grid-col--4.s-Grid-col--xm12 > div > a > img')
@@ -59,7 +49,7 @@ class Scenario1Page(BasePage):
     def working_section(self):
 
         working = (By.CSS_SELECTOR, '#container > div.tensor_ru-content_wrapper > div > '
-                   'div.tensor_ru-container.tensor_ru-section.tensor_ru-About__block3')
+                                    'div.tensor_ru-container.tensor_ru-section.tensor_ru-About__block3')
         return self.find(working)
 
     def get_image_size(self, count: int):
