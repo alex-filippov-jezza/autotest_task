@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
-from selenium.webdriver.common.action_chains import ActionChains
 
 
 class Scenario1Page(BasePage):
@@ -30,10 +29,6 @@ class Scenario1Page(BasePage):
             '#container > div.tensor_ru-content_wrapper > div > div.tensor_ru-Index__block4-bg > div > div > '
             'div:nth-child(1) > div')
         return self.find(block_selector)
-
-    def scroll_to(self, block):
-        action = ActionChains(self.browser)
-        return action.move_to_element(block).perform()
 
     @property
     def block_is_displayed(self):
