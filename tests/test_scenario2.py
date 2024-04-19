@@ -1,3 +1,4 @@
+import time
 from pages.scenario_2 import Scenario2Page
 from pages.global_variable import sbis
 from conftest import browser
@@ -12,6 +13,7 @@ def test_scenario2(browser):
     partners = scenario2.partners_list
     assert partners is not None, "Список партнеров есть"
     scenario2.change_region()
+    time.sleep(2)
     region_new = scenario2.region_name
     assert region_new != region, "Регион не изменился"
     partners_new = scenario2.partners_list
