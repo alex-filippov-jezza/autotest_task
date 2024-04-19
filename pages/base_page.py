@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
 
@@ -21,3 +22,6 @@ class BasePage:
                                              '--hide-sm > a')
         self.find(section_selector).click()
 
+    def scroll_to(self, block):
+        action = ActionChains(self.browser)
+        return action.move_to_element(block).perform()
