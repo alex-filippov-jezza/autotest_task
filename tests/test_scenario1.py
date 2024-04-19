@@ -1,7 +1,6 @@
 from pages.scenario_1 import Scenario1Page
-from pages.global_variable import sbis, link_tensor_about, link_tensor
+from pages.global_variable import sbis, link_tensor_about
 from conftest import browser
-from selenium.webdriver.common.action_chains import ActionChains
 
 
 def test_scenario1(browser):
@@ -16,4 +15,3 @@ def test_scenario1(browser):
     assert link_tensor_about == scenario1.current_url_page, "Открыт не https://tensor.ru/about"
     scenario1.scroll_to(scenario1.working_section)
     assert scenario1.compare_images_result == 3, "Размер изображений в разделе не одинаковый"
-
